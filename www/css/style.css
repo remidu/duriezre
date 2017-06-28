@@ -1,0 +1,85 @@
+/** Add css rules here for your application. */
+
+
+/** Example rules used by the template application (remove for your app) */
+h1 {
+  font-size: 200%;
+  font-weight: bold;
+  color: #777777;
+  margin: 40px 0px 40px;
+  text-align: center;
+}
+
+.sendButton {
+  display: block;
+  font-size: 16pt;
+}
+
+/** Most GWT widgets already have a style name defined */
+.gwt-DialogBox {
+  width: 400px;
+}
+
+.dialogVPanel {
+  margin: 5px;
+}
+
+.serverResponseLabelError {
+  color: red;
+}
+
+/** Set ids using widget.getElement().setId("idOfElement") */
+#closeButton {
+  margin: 15px 6px 6px;
+}
+
+#temporaryText {
+	font-size: 140%;
+  	font-weight: bold;
+  	color: #00000F;
+  	margin: 40px 15px 40px;
+  	text-align: center;
+}
+
+#mainSocialNetworks {
+	text-align: center;
+}
+
+#mainSocialNetworks img {
+	height: 100px;
+	width: 100px;
+	margin: 10px 10px 10px;
+	box-shadow: 0 0 10px black;
+	-webkit-transition: box-shadow 0.5s ease; /* Chrome */
+	transition: box-shadow 0.5s ease;
+}
+
+#mainSocialNetworks img:hover {
+	box-shadow: 0 0 30px black;
+}
+
+#mainSocialNetworks p {
+	font-size: 130%;
+	margin: 15px 15px 5px 15px;
+}
+
+footer {
+	position: relative;
+	height: 250px;
+}
+
+footer .background {
+	background: url(../img/Officer_Barbrady_bg.png) repeat-x;
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	min-height:	2160px;
+	z-index: -2;
+}
+
+footer .figure {
+	position: absolute;
+	bottom: -3px;
+	left: 60px;
+}
