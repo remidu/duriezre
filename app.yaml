@@ -5,12 +5,12 @@ threadsafe: true
 
 handlers:
 - url: /
-  static_files: src/index.html
-  upload: src/index.html
+  static_files: dist/index.html
+  upload: dist/index.html
 
 - url: /(.*)
-  static_files: src/\1
-  upload: src/(.*)
+  static_files: dist/\1
+  upload: dist/(.*)
 
 # Temporary setting to keep gcloud from uploading not required files for deployment
 skip_files:
