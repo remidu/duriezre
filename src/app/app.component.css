@@ -1,0 +1,36 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.title {
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-size: 20px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 150px;
+}
+
+.intro {
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  text-align: center;
+}
+
+.link-list {
+  text-align: center;
+}
+
+.link-list-item {
+  display: inline-block;
+  margin: 20px;
+  text-decoration: none;
+  width: 280px;
+}
+
+.link-list-item img {
+  margin-bottom: 12px;
+  width: 60px;
+}

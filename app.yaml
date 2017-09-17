@@ -1,13 +1,29 @@
-application: duriezre
+#application: duriezre
 runtime: python27
 api_version: 1
 threadsafe: true
 
 handlers:
 - url: /
-  static_files: www/index.html
-  upload: www/index.html
+  static_files: src/index.html
+  upload: src/index.html
 
 - url: /(.*)
-  static_files: www/\1
-  upload: www/(.*)
+  static_files: src/\1
+  upload: src/(.*)
+
+# Temporary setting to keep gcloud from uploading not required files for deployment
+skip_files:
+- ^node_modules$
+- ^app\.yaml
+- ^README\..*
+- \.gitignore
+- ^\.git$
+- ^grunt\.js
+- ^src$
+- ^e2e$
+- \.editorconfig
+- ^karma\.config\.js
+- ^package\.json
+- ^protractor\.conf\.js
+- ^tslint\.json
