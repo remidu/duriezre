@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Duriez Rémi</title>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <header>
+            <h1><span class="machine">duriez.re</span><span class="human">mi</span></h1>
+            <div class="intro">Bonjour, je suis Rémi ! Envie d'en savoir plus sur moi ?</div>
+        </header>
+
+        <main>
+            <div class="profile">
+                <div class="profile-desc">
+                    <span>J'habite à Lille.</span>
+                </div>
+                <div class="profile-link">
+                    <a href="https://www.facebook.com/duriez.remi">
+                        <span>Voir mon profil personnel sur Facebook</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile">
+                <div class="profile-desc">
+                    <span>Je suis développeur chez Ineat.</span>
+                </div>
+                <div class="profile-link">
+                    <a href="https://www.linkedin.com/in/duriez">
+                        <span>Voir mon profil professionnel sur Linkedin</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile">
+                <div class="profile-desc">
+                    <span>J'écoute {{ artists[0] }}, {{ artists[1] }}, {{ artists[2] }}…
+                      </span>
+                </div>
+                <div class="profile-link">
+                    <a href="https://www.last.fm/fr/user/RemiDu">
+                        <span>Voir mes artistes préférés sur Last.fm</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile">
+                <div class="profile-desc">
+                    <span>Je regarde {{ shows[0] }}, {{ shows[1] }}, {{ shows[2] }}…</span>
+                </div>
+                <div class="profile-link">
+                    <a href="https://www.betaseries.com/membre/remi/series">
+                        <span>Voir mes séries télé sur Betaseries</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile">
+                <div class="profile-desc">
+                    <span>Je lis des comics.
+                </div>
+                <div class="profile-link">
+                    <a href="https://leagueofcomicgeeks.com/profile/remi/read-list">
+                        <span>Voir ma liste sur Comic Geeks</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile">
+                <div class="profile-desc">
+                    <span>Je joue aux jeux vidéo.
+                </div>
+                <div class="profile-link">
+                    <a href="https://www.gamekult.com/membre/remidu-1241161/collection">
+                        <span>Voir ma collection sur Gamekult</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile">
+                <div class="profile-desc">
+                    <span>Je bois des bières.
+                </div>
+                <div class="profile-link">
+                    <a href="https://untappd.com/user/remidu">
+                        <span>Voir mon palmarès sur Untappd</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,12 @@
+body {
+    font-family: "helvetica", sans-serif;
+    text-align: center;
+}
+
+h1 .machine {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 .human {
+    font-family: cursive;
+}
