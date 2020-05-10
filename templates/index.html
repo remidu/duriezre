@@ -2,13 +2,12 @@
 <html>
     <head>
         <title>Duriez Rémi</title>
-        <script src="{{ url_for('static', filename='script.js') }}"></script>
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
         <header>
             <h1><span class="machine">duriez.re</span><span class="human">mi</span></h1>
-            <div class="intro">Bonjour, je suis Rémi ! Envie d'en savoir plus sur moi ?</div>
+            <p>Bonjour, je suis Rémi ! Envie d'en savoir plus sur moi ?</p>
         </header>
 
         <main>
@@ -36,8 +35,7 @@
 
             <div class="profile">
                 <div class="profile-desc">
-                    <span>J'écoute {{ artists[0] }}, {{ artists[1] }}, {{ artists[2] }}…
-                      </span>
+                    <span>J'écoute<span id="artists"></span>…</span>
                 </div>
                 <div class="profile-link">
                     <a href="https://www.last.fm/fr/user/RemiDu">
@@ -48,7 +46,7 @@
 
             <div class="profile">
                 <div class="profile-desc">
-                    <span>Je regarde {{ shows[0] }}, {{ shows[1] }}, {{ shows[2] }}…</span>
+                    <span>Je regarde<span id="shows"></span>…</span>
                 </div>
                 <div class="profile-link">
                     <a href="https://www.betaseries.com/membre/remi/series">
@@ -90,5 +88,7 @@
                 </div>
             </div>
         </main>
+    
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
     </body>
 </html>

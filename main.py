@@ -11,28 +11,23 @@ LASTFM_API_URL = 'http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&pe
 
 @app.route('/')
 def root():
-    return render_template('index.html', artists=list(lastfm()), shows=list(betaseries()))
-    #return render_template('index.html', artists=list(['Artiste1', 'Artiste2', 'Artiste3']), shows=list(['Show1', 'Show2', 'Show3']))
+    return render_template('index.html', artists=list(['Artiste1', 'Artiste2', 'Artiste3']), shows=list(['Show1', 'Show2', 'Show3']))
 
-@app.route('/api/profile/music')
-def music():
-    return jsonify(list(lastfm()))
-
+@app.route('/api/profile/lastfm')
 def lastfm():
     response = requests.get(LASTFM_API_URL)
     content = json.loads(response.content.decode('utf-8'))
     artists = map(lambda x: x['name'], content['topartists']['artist'])
-    return artists
+    return jsonify(list(artists))
+    #return jsonify(list(['Artiste1', 'Artiste2', 'Artiste3']))
 
-@app.route('/api/profile/series')
-def series():
-    return jsonify(list(betaseries()))
-
+@app.route('/api/profile/betaseries')
 def betaseries():
     response = requests.get(BETASERIES_API_URL)
     content = json.loads(response.content.decode('utf-8'))
     shows = map(lambda x: x['title'], content['shows'])
-    return shows
+    return jsonify(list(shows))
+    #return jsonify(list(['Show1', 'Show2', 'Show3']))
 
 if __name__=='__main__':
     app.run(debug=True)

@@ -1,12 +1,21 @@
 body {
     font-family: "helvetica", sans-serif;
+    font-size: 1.2rem;
+}
+
+header {
     text-align: center;
 }
 
-h1 .machine {
+header h1 .machine {
     font-family: 'Courier New', Courier, monospace;
 }
 
-h1 .human {
+header h1 .human {
     font-family: cursive;
+}
+
+.profile {
+    margin: 1em;
+    max-width: 30em;
 }
