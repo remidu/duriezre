@@ -11,7 +11,7 @@ LASTFM_API_URL = 'http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&pe
 
 @app.route('/')
 def root():
-    return render_template('index.html', artists=list(['Artiste1', 'Artiste2', 'Artiste3']), shows=list(['Show1', 'Show2', 'Show3']))
+    return render_template('index.html')
 
 @app.route('/api/profile/lastfm')
 def lastfm():

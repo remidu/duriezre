@@ -1,4 +1,5 @@
 body {
+    background-color: mintcream;
     font-family: "helvetica", sans-serif;
     font-size: 1.2rem;
 }
@@ -15,7 +16,99 @@ header h1 .human {
     font-family: cursive;
 }
 
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0 1em 1em 1em;
+}
+
 .profile {
+    flex-grow: 12;
     margin: 1em;
-    max-width: 30em;
+    max-width: 25em;
+    min-width: 22em;
+}
+
+.profile-icon i {
+    font-size: 36px;
+}
+
+.profile-desc {
+    border-color: gray;
+    border-style: solid;
+    border-width: thin;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: left;
+}
+
+.profile.facebook .profile-desc {
+    background-color: rgba(66, 103, 178, 0.2);
+}
+
+.profile.facebook .profile-link a {
+    background-color: rgba(66, 103, 178);
+}
+
+.profile.linkedin .profile-desc {
+    background-color: rgba(40, 103, 118, 0.2);
+}
+
+.profile.linkedin .profile-link a {
+    background-color: rgb(40, 103, 178);
+}
+
+.profile.betaseries .profile-desc {
+    background-color: rgba(59, 141, 208, 0.2);
+}
+
+.profile.betaseries .profile-link a {
+    background-color: rgba(59, 141, 208);
+}
+
+.profile.lastfm .profile-desc {
+    background-color: rgba(213, 16, 7, 0.2);
+}
+
+.profile.lastfm .profile-link a {
+    background-color: rgb(213, 16, 7);
+}
+
+.profile.comicgeeks .profile-desc {
+    background-color: rgba(2, 39, 62, 0.2);
+}
+
+.profile.comicgeeks .profile-link a {
+    background-color: rgb(2, 39, 62);
+}
+
+.profile.gamekult .profile-desc {
+    background-color: rgba(245, 166, 35, 0.2);
+}
+
+.profile.gamekult .profile-link a {
+    background-color: rgb(245, 166, 35);
+}
+
+.profile.untappd .profile-desc {
+    background-color: rgba(255, 204, 0, 0.2);
+}
+
+.profile.untappd .profile-link a {
+    background-color: rgb( 	255, 204, 0);
+}
+
+.profile-link {
+    text-align: right;
+}
+
+.profile-link a {
+    border-color: gray;
+    border-style: solid;
+    border-width: thin;
+    color: rgba(255, 255, 255, 0.95);
+    padding: 0.3em;
+    text-decoration: none;
+    text-shadow: 0 0 2px #000;
 }
