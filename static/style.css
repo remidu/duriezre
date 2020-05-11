@@ -1,7 +1,10 @@
+html {
+    font-size: calc(1em + 1vw)
+}
+
 body {
     background-color: mintcream;
     font-family: "helvetica", sans-serif;
-    font-size: 1.2rem;
 }
 
 header {
@@ -30,14 +33,21 @@ main {
     min-width: 22em;
 }
 
+.profile-display {
+    display: flex;
+    align-items: center;
+}
+
 .profile-icon i {
-    font-size: 36px;
+    font-size: 2em;
 }
 
 .profile-desc {
     border-color: gray;
     border-style: solid;
     border-width: thin;
+    flex-grow: 1;
+    margin-left: 1em;
     padding-left: 1em;
     padding-right: 1em;
     text-align: left;

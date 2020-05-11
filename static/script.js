@@ -3,6 +3,7 @@
 window.addEventListener('load', function () {
     console.log("Hello World!");
     this.updateArtists();
+    this.updateGames();
     this.updateShows();
 });
 
@@ -12,6 +13,16 @@ function updateArtists() {
     .then(json => {
         let element = document.getElementById('artists')
         element.textContent = ' '.concat(json.join(', '));
+    }))
+    .catch(error => console.error("Erreur : " + error));
+}
+
+function updateGames() {
+    fetch('/api/profile/gamekult')
+    .then(response => response.json()
+    .then(json => {
+        let element = document.getElementById('games')
+        element.textContent = ' à '.concat(json.map(game => game.name).join(', '));
     }))
     .catch(error => console.error("Erreur : " + error));
 }
