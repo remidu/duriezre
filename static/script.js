@@ -3,9 +3,10 @@
 window.addEventListener('load', function () {
     console.log("Hello World!");
     this.updateArtists();
-    this.updateComics();
-    this.updateGames();
     this.updateShows();
+    this.updateGames();
+    this.updateComics();
+    this.updateBeers();
 });
 
 function updateArtists() {
@@ -14,6 +15,16 @@ function updateArtists() {
     .then(json => {
         let element = document.getElementById('artists')
         element.textContent = ' '.concat(json.join(', '));
+    }))
+    .catch(error => console.error("Erreur : " + error));
+}
+
+function updateBeers() {
+    fetch('/api/profile/untappd')
+    .then(response => response.json()
+    .then(json => {
+        let element = document.getElementById('beers')
+        element.textContent = ' : '.concat(json.map(beer => beer.name).join(', '));
     }))
     .catch(error => console.error("Erreur : " + error));
 }

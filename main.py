@@ -19,7 +19,6 @@ def lastfm():
     json = requests.get(api_url).json()
     artists = map(lambda x: x['name'], json['topartists']['artist'])
     return jsonify(list(artists))
-    #return jsonify(list(['Artiste1', 'Artiste2', 'Artiste3']))
 
 @app.route('/api/profile/betaseries')
 def betaseries():
@@ -28,7 +27,6 @@ def betaseries():
     json = requests.get(api_url).json()
     shows = map(lambda x: x['title'], json['shows'])
     return jsonify(list(shows))
-    #return jsonify(list(['Show1', 'Show2', 'Show3']))
 
 @app.route('/api/profile/comicgeeks')
 def comicgeeks():
@@ -56,6 +54,16 @@ def gamekult():
     games = list(map(lambda figure:
         {'image_url': figure.img['src'], 'name': figure.next_sibling.next_sibling.h3.a.text}, figure_tags))
     return jsonify(games[:3])
+
+@app.route('/api/profile/untappd')
+def untappd():
+    url = "https://untappd.com/user/remidu/beers?sort=date"
+    html = requests.get(url, headers = {'User-Agent': 'Mozilla/5.0'}).text
+    soup = BeautifulSoup(html, features="html.parser")
+    beer_items = soup.find_all('div', {'class': 'beer-item'})
+    beers = list(map(lambda item:
+        {'image_url': item.a.img['data-original'], 'name': item.find('div', {'class': 'beer-details'}).p.a.text}, beer_items))
+    return jsonify(beers[:3])
 
 if __name__=='__main__':
     app.run(debug=True)
