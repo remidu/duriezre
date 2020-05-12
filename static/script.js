@@ -1,7 +1,6 @@
 'use strict';
 
 window.addEventListener('load', function () {
-    console.log("Hello World!");
     this.updateArtists();
     this.updateShows();
     this.updateGames();
@@ -10,17 +9,17 @@ window.addEventListener('load', function () {
 });
 
 function updateArtists() {
-    fetch('/api/profile/lastfm')
+    fetch('/api/lastfm')
     .then(response => response.json()
     .then(json => {
         let element = document.getElementById('artists')
-        element.textContent = ' '.concat(json.join(', '));
+        element.textContent = ' '.concat(json.map(artist => artist.name).join(', '));
     }))
     .catch(error => console.error("Erreur : " + error));
 }
 
 function updateBeers() {
-    fetch('/api/profile/untappd')
+    fetch('/api/untappd')
     .then(response => response.json()
     .then(json => {
         let element = document.getElementById('beers')
@@ -30,17 +29,17 @@ function updateBeers() {
 }
 
 function updateComics() {
-    fetch('/api/profile/comicgeeks')
+    fetch('/api/comicgeeks')
     .then(response => response.json()
     .then(json => {
         let element = document.getElementById('comics')
-        element.textContent = ' '.concat(json.map(book => book.name).join(', '));
+        element.textContent = ' '.concat(json.map(book => book.name.replace(/ #([0-9])+/, '')).join(', '));
     }))
     .catch(error => console.error("Erreur : " + error));
 }
 
 function updateGames() {
-    fetch('/api/profile/gamekult')
+    fetch('/api/gamekult')
     .then(response => response.json()
     .then(json => {
         let element = document.getElementById('games')
@@ -50,11 +49,11 @@ function updateGames() {
 }
 
 function updateShows() {
-    fetch('/api/profile/betaseries')
+    fetch('/api/betaseries')
     .then(response => response.json()
     .then(json => {
         let element = document.getElementById('shows')
-        element.textContent = ' '.concat(json.join(', '));
+        element.textContent = ' '.concat(json.map(show => show.name.replace(/ \(([0-9])+\)/, '')).join(', '));
     }))
     .catch(error => console.error("Erreur : " + error));
 }
