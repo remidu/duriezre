@@ -48,9 +48,23 @@ main {
     border-width: thin;
     flex-grow: 1;
     margin-left: 1em;
+    margin-right: 0.5em;
+    text-align: left;
+}
+
+.profile-desc p {
     padding-left: 1em;
     padding-right: 1em;
-    text-align: left;
+}
+
+.profile-samples {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 1em;
+}
+
+.profile-samples img {
+    width: 5em;
 }
 
 .profile.facebook .profile-desc {
