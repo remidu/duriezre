@@ -1,19 +1,19 @@
 'use strict';
 
 window.addEventListener('load', function () {
-    this.updateArtists();
+    this.updateMusic();
     this.updateShows();
     this.updateGames();
     this.updateComics();
     this.updateBeers();
 });
 
-function updateArtists() {
+function updateMusic() {
     fetch('/api/lastfm')
     .then(response => response.json()
     .then(json => {
         let element = document.getElementById('artists')
-        element.textContent = ' '.concat(json.map(artist => artist.name).join(', '));
+        element.textContent = ' '.concat(json.map(album => album.artist.name).join(', '));
     }))
     .catch(error => console.error("Erreur : " + error));
 }

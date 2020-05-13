@@ -17,12 +17,13 @@ def root():
 
 @app.route('/api/lastfm')
 def lastfm():
-    api_url = 'http://ws.audioscrobbler.com/2.0/?method=user.gettopartists' \
-        + '&period=1month&limit=3&format=json&user=remidu&api_key=' + config.lastfm_api_key
+    api_url = 'http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=remidu' \
+        + '&period=1month&limit=3&format=json&api_key=' + config.lastfm_api_key
     json = requests.get(api_url).json()
-    artists = map(lambda x:
-        {'link': x['url'], 'name': x['name']}, json['topartists']['artist'])
-    return jsonify(list(artists))
+    albums = map(lambda x:
+        {'image': x['image'][3]['#text'], 'name': x['name'], 'url': x['url'],
+            'artist': {'name': x['artist']['name'], 'url': x['artist']['url']}}, json['topalbums']['album'])
+    return jsonify(list(albums))
 
 @app.route('/api/betaseries')
 def betaseries():
@@ -30,7 +31,7 @@ def betaseries():
         + '&order=last_seen&summary=true&limit=3&key=' + config.betaseries_api_key
     json = requests.get(api_url).json()
     shows = map(lambda x:
-        {'id': x['id'], 'image_url': x['images']['poster'], 'name': x['title']}, json['shows'])
+        {'id': x['id'], 'image': x['images']['poster'], 'name': x['title']}, json['shows'])
     return jsonify(list(shows))
 
 @app.route('/api/comicgeeks')
@@ -47,7 +48,7 @@ def comicgeeks():
     soup = BeautifulSoup(html, features="html.parser")
     li_tags = soup.find_all('li')
     comics = list(map(lambda li:
-        {'image_url': li.img['data-original'], 'link': 'https://leagueofcomicgeeks.com' + li.a['href'],
+        {'image': li.img['data-original'], 'url': 'https://leagueofcomicgeeks.com' + li.a['href'],
             'name': li.find('div', {'class': 'comic-title'}).text}, li_tags))
     return jsonify(comics[:3])
 
@@ -58,7 +59,7 @@ def gamekult():
     soup = BeautifulSoup(html, features="html.parser")
     figure_tags = soup.find_all('figure')
     games = list(map(lambda figure:
-        {'image_url': figure.img['src'], 'link' : 'https://www.gamekult.com' + figure.a['href'],
+        {'image': figure.img['src'], 'url' : 'https://www.gamekult.com' + figure.a['href'],
             'name': figure.next_sibling.next_sibling.h3.a.text}, figure_tags))
     return jsonify(games[:3])
 
@@ -69,7 +70,7 @@ def untappd():
     soup = BeautifulSoup(html, features="html.parser")
     beer_items = soup.find_all('div', {'class': 'beer-item'})
     beers = list(map(lambda item:
-        {'image_url': item.img['data-original'], 'link': 'https://untappd.com' + item.a['href'],
+        {'image': item.img['data-original'], 'url': 'https://untappd.com' + item.a['href'],
             'name': item.find('div', {'class': 'beer-details'}).p.a.text}, beer_items))
     return jsonify(beers[:3])
 
