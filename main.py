@@ -3,10 +3,13 @@ from bs4 import BeautifulSoup
 from datetime import date, timedelta
 from flask import Flask, jsonify, render_template
 import requests
+import requests_cache
 
 import config
 
 app = Flask(__name__)
+
+requests_cache.install_cache(expire_after=86400) # cache during 24h
 
 @app.route('/')
 def root():
