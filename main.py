@@ -9,7 +9,7 @@ import config
 
 app = Flask(__name__)
 
-requests_cache.install_cache(expire_after=86400) # cache during 24h
+requests_cache.install_cache('cache', backend='memory', expire_after=43200) # cache during 12h
 
 @app.route('/')
 def root():
