@@ -36,14 +36,9 @@ def betaseries():
 
 @app.route('/api/comicgeeks')
 def comicgeeks():
-    three_months_ago = date.today() - timedelta(days=60)
     url = 'https://leagueofcomicgeeks.com/comic/get_comics?user_id=43509' \
-        + '&list=1&date_type=recent&order=pulls&date=' + three_months_ago.isoformat()
-    response = requests.get(url + '&list_filter=read')
-    if response.headers['Content-Type'] == 'application/json':
-        json = response.json()
-    else:
-        json = requests.get(url).json() # fetch unread comics
+        + '&list=1&date_type=recent&order=pulls'
+    json = requests.get(url).json()
     html = json['list']
     soup = BeautifulSoup(html, features="html.parser")
     li_tags = soup.find_all('li')
