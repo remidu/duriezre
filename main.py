@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from bs4 import BeautifulSoup
-from datetime import date, timedelta
 from flask import Flask, jsonify, render_template
 import requests
 import requests_cache
@@ -43,7 +42,8 @@ def comicgeeks():
     soup = BeautifulSoup(html, features="html.parser")
     li_tags = soup.find_all('li')
     comics = list(map(lambda li:
-        {'image': li.img['data-original'], 'url': 'https://leagueofcomicgeeks.com' + li.a['href'],
+        {'image': li.img['data-original'].replace('medium', 'large'),
+            'url': 'https://leagueofcomicgeeks.com' + li.a['href'],
             'name': li.find('div', {'class': 'comic-title'}).text}, li_tags))
     return jsonify(comics[:3])
 
@@ -54,7 +54,8 @@ def gamekult():
     soup = BeautifulSoup(html, features="html.parser")
     figure_tags = soup.find_all('figure')
     games = list(map(lambda figure:
-        {'image': figure.img['src'], 'url' : 'https://www.gamekult.com' + figure.a['href'],
+        {'image': figure.img['src'].replace('90_90', '220_220'),
+            'url' : 'https://www.gamekult.com' + figure.a['href'],
             'name': figure.next_sibling.next_sibling.h3.a.text}, figure_tags))
     return jsonify(games[:3])
 
