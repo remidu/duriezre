@@ -1,13 +1,21 @@
 html {
-    font-size: calc(1em + 1vw)
+    font-size: calc(1em + 1vw);
+}
+
+@media screen and (max-device-width: 400px) {
+    html {
+        font-size: 5vw;
+    }
 }
 
 body {
     background-color: mintcream;
     font-family: "helvetica", sans-serif;
+    margin: 0;
 }
 
 header {
+    margin: 0 1em 0 1em;
     text-align: center;
 }
 
@@ -19,18 +27,9 @@ header h1 .human {
     font-family: cursive;
 }
 
-main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 0 1em 1em 1em;
-}
-
 .profile {
-    flex-grow: 12;
-    margin: 1em;
-    max-width: 25em;
-    min-width: 22em;
+    margin: 2em 0 2em 0;
+    width: 100%;
 }
 
 .profile-display {
@@ -38,29 +37,42 @@ main {
     align-items: center;
 }
 
-.profile-icon i {
-    font-size: 2em;
-}
-
 .profile-desc {
-    border-color: gray;
-    border-style: solid;
-    border-width: thin;
+    display: flex;
     flex-grow: 1;
-    margin-left: 1em;
-    margin-right: 0.5em;
+    padding: 1em 0 1em 0;
     text-align: left;
 }
 
+@media screen and (max-width: 800px) {
+    .profile-desc {
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-device-width: 400px) {
+    .profile-desc {
+        flex-wrap: wrap;
+    }
+}
+
 .profile-desc p {
-    padding-left: 1em;
+    margin-top: 0;
+    padding-left: 1.5em;
     padding-right: 1em;
+}
+
+@media screen and (min-width: 800px) and (min-device-width: 400px) {
+    .profile-desc p {
+        max-width: 400px;
+    }
 }
 
 .profile-samples {
     display: flex;
+    flex-grow: 1;
     justify-content: space-evenly;
-    padding-bottom: 1em;
+    min-width: 18em;
 }
 
 .profile-samples img {
