@@ -34,8 +34,9 @@ function updateComics() {
     fetch('/api/comicgeeks')
     .then(response => response.json()
     .then(json => {
-        let element = document.getElementById('comics')
-        element.textContent = ' '.concat(json.map(book => book.name.replace(/ #([0-9])+/, '')).join(', '));
+        let element = document.getElementById('comics');
+        let names = json.map(book => book.name.replace(/ #([0-9])+/, ''));
+        element.textContent = ' '.concat([...new Set(names)].join(', '));
         json.forEach(book => this.addImgToProfile('comicgeeks', book.image, book.name, book.url));
     }))
     .catch(error => console.error("Erreur : " + error));

@@ -40,31 +40,27 @@ header h1 .human {
 .profile-desc {
     display: flex;
     flex-grow: 1;
-    padding: 1em 0 1em 0;
+    padding: 0 1em 0 1em;
     text-align: left;
 }
 
-@media screen and (max-width: 800px) {
-    .profile-desc {
-        flex-wrap: wrap;
-    }
-}
-
-@media screen and (max-device-width: 400px) {
-    .profile-desc {
-        flex-wrap: wrap;
-    }
-}
-
 .profile-desc p {
-    margin-top: 0;
-    padding-left: 1.5em;
-    padding-right: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+@media screen and (max-width: 800px), screen and (max-device-width: 400px) {
+    .profile-desc {
+        flex-wrap: wrap;
+    }
 }
 
 @media screen and (min-width: 800px) and (min-device-width: 400px) {
     .profile-desc p {
-        max-width: 400px;
+        width: 45%;
+    }
+    .profile-samples {
+        margin-top: 1em;
     }
 }
 
@@ -72,6 +68,7 @@ header h1 .human {
     display: flex;
     flex-grow: 1;
     justify-content: space-evenly;
+    margin-bottom: 1em;
     min-width: 18em;
 }
 
@@ -146,5 +143,5 @@ header h1 .human {
     color: rgba(255, 255, 255, 0.95);
     padding: 0.3em;
     text-decoration: none;
-    text-shadow: 0 0 2px #000;
+    text-shadow: 0 0 4px black;
 }
