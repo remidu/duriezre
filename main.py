@@ -42,9 +42,9 @@ def comicgeeks():
     soup = BeautifulSoup(html, features="html.parser")
     li_tags = soup.find_all('li')
     comics = list(map(lambda li:
-        {'image': li.img['data-original'].replace('medium', 'large'),
+        {'image': li.img['data-src'].replace('medium', 'large'),
             'url': 'https://leagueofcomicgeeks.com' + li.a['href'],
-            'name': li.find('div', {'class': 'comic-title'}).text}, li_tags))
+            'name': li.find('div', {'class': 'title'}).text.replace('\n', '')}, li_tags))
     return jsonify(comics[:3])
 
 @app.route('/api/gamekult')
