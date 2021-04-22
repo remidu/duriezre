@@ -53,6 +53,9 @@ header h1 .human {
     .profile-desc {
         flex-wrap: wrap;
     }
+    .profile-desc p {
+        width: 100%;
+    }
 }
 
 @media screen and (min-width: 800px) and (min-device-width: 400px) {
@@ -100,12 +103,20 @@ header h1 .human {
     background-color: rgba(59, 141, 208);
 }
 
+.profile.betaseries .profile-samples {
+    min-height: 7.5em;
+}
+
 .profile.lastfm .profile-desc {
     background-color: rgba(213, 16, 7, 0.2);
 }
 
 .profile.lastfm .profile-link a {
     background-color: rgb(213, 16, 7);
+}
+
+.profile.lastfm .profile-samples {
+    min-height: 5.3em;
 }
 
 .profile.comicgeeks .profile-desc {
@@ -116,6 +127,10 @@ header h1 .human {
     background-color: rgb(2, 39, 62);
 }
 
+.profile.comicgeeks .profile-samples {
+    min-height: 8em;
+}
+
 .profile.gamekult .profile-desc {
     background-color: rgba(245, 166, 35, 0.2);
 }
@@ -124,12 +139,20 @@ header h1 .human {
     background-color: rgb(245, 166, 35);
 }
 
+.profile.gamekult .profile-samples {
+    min-height: 5.3em;
+}
+
 .profile.untappd .profile-desc {
     background-color: rgba(255, 204, 0, 0.2);
 }
 
 .profile.untappd .profile-link a {
     background-color: rgb( 	255, 204, 0);
+}
+
+.profile.untappd .profile-samples {
+    min-height: 5.3em;
 }
 
 .profile-link {
