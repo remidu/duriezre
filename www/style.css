@@ -1,0 +1,51 @@
+html {
+    font-size: calc(1em + 1vw);
+}
+
+@media screen and (max-device-width: 400px) {
+    html {
+        font-size: 5vw;
+    }
+}
+
+body {
+    background-color: mintcream;
+    font-family: "helvetica", sans-serif;
+    margin: 0;
+}
+
+header {
+    text-align: center;
+}
+
+header h1 .machine {
+    font-family: monospace;
+}
+
+header h1 .human {
+    font-family: cursive;
+}
+
+header p span {
+	margin: 0 1em 0 1em;
+	white-space: nowrap;
+}
+
+section {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+section {
+	font-size: calc(2em + 2vw);
+	margin: 0 0.5em 0 0.5em;
+}
+
+section div {
+	margin: 0.5em 0.5em 0.5em 0.5em;
+}
+
+section a {
+	text-decoration: none;
+}
