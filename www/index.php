@@ -12,6 +12,8 @@
 
         <?php
 		$config = include('config.php');
+        require('item.php');
+        require('album.php');
 		?>
 
         <main>
@@ -43,7 +45,7 @@
 
             <?php
             function extract_album($user_album) {
-                $album = new stdClass();
+                $album = new Album();
                 $album->{'artist'} = $user_album->{'artist'}->{'name'};
                 $album->{'name'} = $user_album->{'name'};
                 $album->{'url'} = $user_album->{'url'};
@@ -64,9 +66,7 @@
                         <div class="profile-samples">
                             <?php
                             foreach($albums as $album) {
-                                echo '<a href="'.$album->{'url'}.'">
-                                <img src="'.$album->{'image'}.'" title="'.$album->{'name'}.'">
-                                </a>';
+                                $album->displayThumbnail();
                             }
                             ?>
                         </div>
@@ -81,7 +81,7 @@
 
             <?php
             function extract_show($member_show, $show_detail) {
-                $show = new stdClass();
+                $show = new Item();
                 $show->{'url'} = 'https://www.betaseries.com/serie/'.$show_detail->{'slug'};
                 $show->{'image'} = $member_show->{'images'}->{'poster'};
                 $show->{'name'} = $member_show->{'title'};
@@ -110,9 +110,7 @@
                         <div class="profile-samples">
                             <?php
                             foreach($shows as $show) {
-                                echo '<a href="'.$show->{'url'}.'">
-                                <img src="'.$show->{'image'}.'" title="'.$show->{'name'}.'">
-                                </a>';
+                                $show->displayThumbnail();
                             }
                             ?>
                         </div>
@@ -127,7 +125,7 @@
 
             <?php
             function extract_book($node) {
-                $book = new stdClass();
+                $book = new Item();
                 $book->{'url'} = 'https://leagueofcomicgeeks.com'.$node->childNodes->item(1)->childNodes->item(1)->attributes->getNamedItem('href')->textContent;
                 $book->{'image'} = str_replace('medium','large',$node->childNodes->item(1)->childNodes->item(1)->childNodes->item(1)->attributes->getNamedItem('data-src')->textContent);
                 $book->{'name'} = $node->childNodes->item(7)->childNodes->item(1)->textContent;
@@ -154,9 +152,7 @@
                         <div class="profile-samples">
                             <?php
                             foreach($comics as $book) {
-                                echo '<a href="'.$book->{'url'}.'">
-                                <img src="'.$book->{'image'}.'" title="'.$book->{'name'}.'">
-                                </a>';
+                                $book->displayThumbnail();
                             }
                             ?>
                         </div>
@@ -171,7 +167,7 @@
 
             <?php
             function extract_game($node) {
-                $game = new stdClass();
+                $game = new Item();
                 $game->{'url'} = 'https://www.gamekult.com'.$node->childNodes->item(1)->attributes->getNamedItem('href')->textContent;
                 $game->{'image'} = str_replace('90_90','220_220',$node->childNodes->item(1)->childNodes->item(1)->attributes->getNamedItem('src')->textContent);
                 $game->{'name'} = $node->childNodes->item(1)->childNodes->item(1)->attributes->getNamedItem('alt')->textContent;
@@ -198,9 +194,7 @@
                         <div class="profile-samples">
                             <?php
                             foreach($games as $game) {
-                                echo '<a href="'.$game->{'url'}.'">
-                                <img src="'.$game->{'image'}.'" title="'.$game->{'name'}.'">
-                                </a>';
+                                $game->displayThumbnail();
                             }
                             ?>
                         </div>
@@ -215,7 +209,7 @@
 
             <?php
             function extract_beer($node) {
-                $beer = new stdClass();
+                $beer = new Item();
                 $beer->{'url'} = 'https://untappd.com'.$node->childNodes->item(1)->attributes->getNamedItem('href')->textContent;
                 $beer->{'image'} = $node->childNodes->item(1)->childNodes->item(1)->attributes->getNamedItem('data-original')->textContent;
                 $beer->{'name'} = $node->childNodes->item(2)->childNodes->item(1)->childNodes->item(0)->textContent;
@@ -241,9 +235,7 @@
                         <div class="profile-samples">
                             <?php
                             foreach($beers as $beer) {
-                                echo '<a href="'.$beer->{'url'}.'">
-                                <img src="'.$beer->{'image'}.'" title="'.$beer->{'name'}.'">
-                                </a>';
+                                $beer->displayThumbnail();
                             }
                             ?>
                         </div>
