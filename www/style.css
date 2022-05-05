@@ -31,21 +31,144 @@ header p span {
 	white-space: nowrap;
 }
 
-section {
-	display: flex;
-	justify-content: space-evenly;
-	flex-wrap: wrap;
+.profile {
+    margin: 2em 0 2em 0;
+    width: 100%;
 }
 
-section {
-	font-size: calc(2em + 2vw);
-	margin: 0 0.5em 0 0.5em;
+.profile-display {
+    display: flex;
+    align-items: center;
 }
 
-section div {
-	margin: 0.5em 0.5em 0.5em 0.5em;
+.profile-desc {
+    display: flex;
+    flex-grow: 1;
+    padding: 0 1em 0 1em;
+    text-align: left;
 }
 
-section a {
-	text-decoration: none;
+.profile-desc p {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+@media screen and (max-width: 800px), screen and (max-device-width: 400px) {
+    .profile-desc {
+        flex-wrap: wrap;
+    }
+    .profile-desc p {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 800px) and (min-device-width: 400px) {
+    .profile-desc p {
+        width: 45%;
+    }
+    .profile-samples {
+        margin-top: 1em;
+    }
+}
+
+.profile-samples {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-evenly;
+    margin-bottom: 1em;
+    min-width: 18em;
+}
+
+.profile-samples img {
+    width: 5em;
+}
+
+.profile.facebook .profile-desc {
+    background-color: rgba(66, 103, 178, 0.2);
+}
+
+.profile.facebook .profile-link a {
+    background-color: rgba(66, 103, 178);
+}
+
+.profile.linkedin .profile-desc {
+    background-color: rgba(40, 103, 118, 0.2);
+}
+
+.profile.linkedin .profile-link a {
+    background-color: rgb(40, 103, 178);
+}
+
+.profile.betaseries .profile-desc {
+    background-color: rgba(59, 141, 208, 0.2);
+}
+
+.profile.betaseries .profile-link a {
+    background-color: rgba(59, 141, 208);
+}
+
+.profile.betaseries .profile-samples {
+    min-height: 7.5em;
+}
+
+.profile.lastfm .profile-desc {
+    background-color: rgba(213, 16, 7, 0.2);
+}
+
+.profile.lastfm .profile-link a {
+    background-color: rgb(213, 16, 7);
+}
+
+.profile.lastfm .profile-samples {
+    min-height: 5.3em;
+}
+
+.profile.comicgeeks .profile-desc {
+    background-color: rgba(2, 39, 62, 0.2);
+}
+
+.profile.comicgeeks .profile-link a {
+    background-color: rgb(2, 39, 62);
+}
+
+.profile.comicgeeks .profile-samples {
+    min-height: 8em;
+}
+
+.profile.gamekult .profile-desc {
+    background-color: rgba(245, 166, 35, 0.2);
+}
+
+.profile.gamekult .profile-link a {
+    background-color: rgb(245, 166, 35);
+}
+
+.profile.gamekult .profile-samples {
+    min-height: 5.3em;
+}
+
+.profile.untappd .profile-desc {
+    background-color: rgba(255, 204, 0, 0.2);
+}
+
+.profile.untappd .profile-link a {
+    background-color: rgb( 	255, 204, 0);
+}
+
+.profile.untappd .profile-samples {
+    min-height: 5.3em;
+}
+
+.profile-link {
+    text-align: right;
+}
+
+.profile-link a {
+    border-color: gray;
+    border-style: solid;
+    border-width: thin;
+    color: rgba(255, 255, 255, 0.95);
+    padding: 0.3em;
+    text-decoration: none;
+    text-shadow: 0 0 4px black;
 }
