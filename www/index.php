@@ -19,7 +19,7 @@
                 </div>
                 <div class="profile-link">
                     <a href="https://www.facebook.com/duriez.remi" rel="me">
-                        <span>Voir mon profil personnel sur Facebook</span>
+                        <span>Voir mon profil perso sur Facebook</span>
                     </a>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="profile-link">
                     <a href="https://www.linkedin.com/in/duriez" rel="me">
-                        <span>Voir mon profil professionnel sur Linkedin</span>
+                        <span>Voir mon profil pro sur Linkedin</span>
                     </a>
                 </div>
             </div>

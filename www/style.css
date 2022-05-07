@@ -39,6 +39,7 @@ header p span {
 .profile-display {
     display: flex;
     align-items: center;
+    padding: 0 1em 0 1em;
 }
 
 .profile-desc {
