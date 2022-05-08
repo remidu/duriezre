@@ -63,7 +63,7 @@ header p span {
 
 @media screen and (min-width: 800px) and (min-device-width: 400px) {
     .profile-desc p {
-        width: 45%;
+        width: 50%;
     }
     .profile-samples {
         margin-top: 1em;
