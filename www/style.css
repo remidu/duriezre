@@ -32,14 +32,12 @@ header p span {
 }
 
 .profile {
-    margin: 2em 0 2em 0;
-    width: 100%;
+    margin: 2em 1em 2em 1em;
 }
 
 .profile-display {
     display: flex;
     align-items: center;
-    padding: 0 1em 0 1em;
 }
 
 .profile-desc {
