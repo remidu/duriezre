@@ -52,15 +52,18 @@ function updateComics() {
 }
 
 function updateGames() {
+    let element = document.getElementById('games');
     fetch('/api/gamekult')
     .then(response => response.json()
     .then(json => {
-        let element = document.getElementById('games');
         element.textContent = ' à '.concat(json.map(game => game.name).join(', '));
         json.forEach(game =>
             this.addImgToProfile('gamekult', game.image, game.name, game.url));
     }))
-    .catch(error => console.error("Erreur : " + error));
+    .catch(error => {
+        console.error("Erreur : " + error);
+        element.textContent = ' aux jeux vidéo';
+    });
 }
 
 function updateShows() {

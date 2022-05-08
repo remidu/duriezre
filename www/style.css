@@ -35,11 +35,6 @@ header p span {
     margin: 2em 1em 2em 1em;
 }
 
-.profile-display {
-    display: flex;
-    align-items: center;
-}
-
 .profile-desc {
     display: flex;
     flex-grow: 1;
@@ -63,7 +58,7 @@ header p span {
 
 @media screen and (min-width: 800px) and (min-device-width: 400px) {
     .profile-desc p {
-        width: 50%;
+        width: 40%;
     }
     .profile-samples {
         margin-top: 1em;
@@ -79,18 +74,6 @@ header p span {
 
 .profile-samples img {
     width: 5em;
-}
-
-.profile.facebook .profile-desc {
-    background-color: rgba(66, 103, 178, 0.2);
-}
-
-.profile.facebook .profile-link a {
-    background-color: rgba(66, 103, 178);
-}
-
-.profile.linkedin .profile-desc {
-    background-color: rgba(40, 103, 118, 0.2);
 }
 
 .profile.linkedin .profile-link a {
@@ -155,6 +138,14 @@ header p span {
 
 .profile.untappd .profile-samples {
     min-height: 5.3em;
+}
+
+.profile.social .profile-desc {
+    background-color: rgba(66, 103, 178, 0.2);
+}
+
+.profile.social .profile-link a {
+    background-color: rgba(66, 103, 178);
 }
 
 .profile-link {
