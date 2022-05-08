@@ -75,7 +75,6 @@ header p span {
     flex-grow: 1;
     justify-content: space-evenly;
     margin-bottom: 1em;
-    min-width: 18em;
 }
 
 .profile-samples img {
