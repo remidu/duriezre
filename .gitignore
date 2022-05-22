@@ -1,4 +1,6 @@
 .vscode/*
 .venv/*
 
+target/
+
 __pycache__
