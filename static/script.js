@@ -9,15 +9,18 @@ window.addEventListener('load', function () {
 });
 
 function updateMusic() {
+    let element = document.getElementById('artists');
     fetch('/api/lastfm')
     .then(response => response.json()
     .then(json => {
-        let element = document.getElementById('artists')
         element.textContent = ' '.concat(json.map(album => album.artist.name).join(', '));
         json.forEach(album =>
             this.addImgToProfile('lastfm', album.image, album.artist.name + " – " + album.name, album.url));
     }))
-    .catch(error => console.error("Erreur : " + error));
+    .catch(error => {
+        console.error("Erreur : " + error);
+        element.textContent = ' de la musique';
+    });
 }
 
 function updateBeers() {
@@ -33,40 +36,49 @@ function updateBeers() {
 }
 
 function updateComics() {
+    let element = document.getElementById('comics');
     fetch('/api/comicgeeks')
     .then(response => response.json()
     .then(json => {
-        let element = document.getElementById('comics');
         let names = json.map(book => book.name.replace(/ #([0-9])+/, ''));
         element.textContent = ' '.concat([...new Set(names)].join(', '));
         json.forEach(book =>
             this.addImgToProfile('comicgeeks', book.image, book.name, book.url));
     }))
-    .catch(error => console.error("Erreur : " + error));
+    .catch(error => {
+        console.error("Erreur : " + error);
+        element.textContent = ' des comics';
+    });
 }
 
 function updateGames() {
+    let element = document.getElementById('games');
     fetch('/api/gamekult')
     .then(response => response.json()
     .then(json => {
-        let element = document.getElementById('games')
         element.textContent = ' à '.concat(json.map(game => game.name).join(', '));
         json.forEach(game =>
             this.addImgToProfile('gamekult', game.image, game.name, game.url));
     }))
-    .catch(error => console.error("Erreur : " + error));
+    .catch(error => {
+        console.error("Erreur : " + error);
+        element.textContent = ' aux jeux vidéo';
+    });
 }
 
 function updateShows() {
+    let element = document.getElementById('shows');
     fetch('/api/betaseries')
     .then(response => response.json()
     .then(json => {
-        let element = document.getElementById('shows')
         element.textContent = ' '.concat(json.map(show => show.name.replace(/ \(([0-9])+\)/, '')).join(', '));
         json.forEach(show =>
-            this.addImgToProfile('betaseries', show.image, show.name)); // TODO add url
+            this.addImgToProfile('betaseries', show.image, show.name, show.url));
     }))
-    .catch(error => console.error("Erreur : " + error));
+    .catch(error => {
+        console.error("Erreur : " + error);
+        element.textContent = ' des séries télé';
+    });
 }
 
 function addImgToProfile(profileName, image, title, url) {
@@ -78,5 +90,5 @@ function addImgToProfile(profileName, image, title, url) {
     a.appendChild(img);
     document.getElementsByClassName(profileName)[0]
         .getElementsByClassName('profile-samples')[0]
-            .appendChild(url ? a : img);
+            .appendChild(a);
 }

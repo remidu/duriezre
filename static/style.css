@@ -15,21 +15,24 @@ body {
 }
 
 header {
-    margin: 0 1em 0 1em;
     text-align: center;
 }
 
 header h1 .machine {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: monospace;
 }
 
 header h1 .human {
     font-family: cursive;
 }
 
+header p span {
+	margin: 0 1em 0 1em;
+	white-space: nowrap;
+}
+
 .profile {
-    margin: 2em 0 2em 0;
-    width: 100%;
+    margin: 2em 1em 2em 1em;
 }
 
 .profile-display {
@@ -72,27 +75,10 @@ header h1 .human {
     flex-grow: 1;
     justify-content: space-evenly;
     margin-bottom: 1em;
-    min-width: 18em;
 }
 
 .profile-samples img {
     width: 5em;
-}
-
-.profile.facebook .profile-desc {
-    background-color: rgba(66, 103, 178, 0.2);
-}
-
-.profile.facebook .profile-link a {
-    background-color: rgba(66, 103, 178);
-}
-
-.profile.linkedin .profile-desc {
-    background-color: rgba(40, 103, 118, 0.2);
-}
-
-.profile.linkedin .profile-link a {
-    background-color: rgb(40, 103, 178);
 }
 
 .profile.betaseries .profile-desc {
@@ -155,6 +141,14 @@ header h1 .human {
     min-height: 5.3em;
 }
 
+.profile.social .profile-desc {
+    background-color: rgba(66, 103, 178, 0.2);
+}
+
+.profile.social .profile-link a {
+    background-color: rgba(66, 103, 178);
+}
+
 .profile-link {
     text-align: right;
 }
@@ -166,5 +160,5 @@ header h1 .human {
     color: rgba(255, 255, 255, 0.95);
     padding: 0.3em;
     text-decoration: none;
-    text-shadow: 0 0 4px black;
+    text-shadow: 1px 1px 4px black;
 }

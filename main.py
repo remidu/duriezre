@@ -25,12 +25,17 @@ def lastfm():
     return jsonify(list(albums))
 
 @app.route('/api/betaseries')
-def betaseries():
-    api_url = 'https://api.betaseries.com/shows/member?id=23559' \
+def betaseries(): 
+    shows_api_url = 'https://api.betaseries.com/shows/member?id=23559' \
         + '&order=last_seen&summary=true&limit=3&key=' + config.betaseries_api_key
-    json = requests.get(api_url).json()
-    shows = map(lambda x:
-        {'id': x['id'], 'image': x['images']['poster'], 'name': x['title']}, json['shows'])
+    shows_payload = requests.get(shows_api_url).json()
+    ids = ','.join(map(lambda x: str(x['id']), shows_payload['shows']))
+    details_api_url = 'https://api.betaseries.com/shows/display?id=' + ids \
+        + '&key=' + config.betaseries_api_key
+    details_payload = requests.get(details_api_url).json()
+    shows = map(lambda x,y:
+        {'id': x['id'], 'image': x['images']['poster'], 'name': x['title'],
+            'url': 'https://www.betaseries.com/serie/' + y['slug']}, shows_payload['shows'], details_payload['shows'])
     return jsonify(list(shows))
 
 @app.route('/api/comicgeeks')
