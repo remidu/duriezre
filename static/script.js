@@ -13,7 +13,8 @@ function updateMusic() {
     fetch('/api/lastfm')
     .then(response => response.json()
     .then(json => {
-        element.textContent = ' '.concat(json.map(album => album.artist.name).join(', '));
+        let names = json.map(album => album.artist.name);
+        element.textContent = ' '.concat([...new Set(names)].join(', '));
         json.forEach(album =>
             this.addImgToProfile('lastfm', album.image, album.artist.name + " – " + album.name, album.url));
     }))
@@ -28,7 +29,8 @@ function updateBeers() {
     .then(response => response.json()
     .then(json => {
         let element = document.getElementById('beers')
-        element.textContent = ' : '.concat(json.map(beer => beer.name).join(', '));
+        let names = json.map(beer => beer.name);
+        element.textContent = ' : '.concat([...new Set(names)].join(', '));
         json.forEach(beer =>
             this.addImgToProfile('untappd', beer.image, beer.name, beer.url));
     }))
