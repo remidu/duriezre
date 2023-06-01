@@ -1,0 +1,30 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - actions
+
+env:
+  PROJECT_ID: ${{ secrets.GAE_PROJECT_ID }}
+
+jobs:
+  deploy:
+    name: Deploy to Google App Engine
+    runs-on: ubuntu-latest
+
+    steps:
+      - id: checkout
+        uses: actions/checkout@v3
+      
+      - id: auth
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY_JSON }}
+
+      - id: deploy
+        uses: google-github-actions/deploy-appengine@v1
+        with:
+          env_vars: |-
+            BETASERIES_API_KEY= ${{ secrets.BETASERIES_API_KEY }}
+            LASTFM_API_KEY= ${{ secrets.LASTFM_API_KEY }}
