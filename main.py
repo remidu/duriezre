@@ -1,10 +1,9 @@
 #!/usr/bin/env python
+import os
 from bs4 import BeautifulSoup
 from flask import Flask, jsonify, render_template
 import requests
 import requests_cache
-
-import config
 
 app = Flask(__name__)
 
@@ -16,8 +15,9 @@ def root():
 
 @app.route('/api/lastfm')
 def lastfm():
+    api_key = os.environ['LASTFM_API_KEY']
     api_url = 'http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=remidu' \
-        + '&period=1month&limit=3&format=json&api_key=' + config.lastfm_api_key
+        + '&period=1month&limit=3&format=json&api_key=' + api_key
     json = requests.get(api_url).json()
     albums = map(lambda x:
         {'image': x['image'][3]['#text'], 'name': x['name'], 'url': x['url'],
@@ -25,13 +25,14 @@ def lastfm():
     return jsonify(list(albums))
 
 @app.route('/api/betaseries')
-def betaseries(): 
+def betaseries():
+    api_key = os.environ['BETASERIES_API_KEY']
     shows_api_url = 'https://api.betaseries.com/shows/member?id=23559' \
-        + '&order=last_seen&summary=true&limit=3&key=' + config.betaseries_api_key
+        + '&order=last_seen&summary=true&limit=3&key=' + api_key
     shows_payload = requests.get(shows_api_url).json()
     ids = ','.join(map(lambda x: str(x['id']), shows_payload['shows']))
     details_api_url = 'https://api.betaseries.com/shows/display?id=' + ids \
-        + '&key=' + config.betaseries_api_key
+        + '&key=' + api_key
     details_payload = requests.get(details_api_url).json()
     shows = map(lambda x,y:
         {'id': x['id'], 'image': x['images']['poster'], 'name': x['title'],
