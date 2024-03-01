@@ -73,7 +73,7 @@ def untappd():
     beer_items = soup.find_all('div', {'class': 'beer-item'})
     beers = list(map(lambda item:
         {'image': item.a.img['src'], 'url': 'https://untappd.com' + item.a['href'],
-            'name': item.a.img['alt']}, beer_items))
+            'name': item.a.img['alt'].replace(' label', '')}, beer_items))
     return jsonify(beers[:3])
 
 if __name__=='__main__':
