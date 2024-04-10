@@ -43,7 +43,8 @@ def betaseries():
 def comicgeeks():
     url = 'https://leagueofcomicgeeks.com/comic/get_comics?user_id=43509' \
         + '&list=1&date_type=recent&order=pulls'
-    json = requests.get(url).json()
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0'}
+    json = requests.get(url, headers=headers).json()
     html = json['list']
     soup = BeautifulSoup(html, features="html.parser")
     li_tags = soup.find_all('li')
