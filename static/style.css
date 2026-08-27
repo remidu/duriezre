@@ -105,18 +105,6 @@ header p span {
     min-height: 5.3em;
 }
 
-.profile.comicgeeks .profile-desc {
-    background-color: rgba(2, 39, 62, 0.2);
-}
-
-.profile.comicgeeks .profile-link a {
-    background-color: rgb(2, 39, 62);
-}
-
-.profile.comicgeeks .profile-samples {
-    min-height: 8em;
-}
-
 .profile.gamekult .profile-desc {
     background-color: rgba(245, 166, 35, 0.2);
 }
@@ -127,26 +115,6 @@ header p span {
 
 .profile.gamekult .profile-samples {
     min-height: 5.3em;
-}
-
-.profile.untappd .profile-desc {
-    background-color: rgba(255, 204, 0, 0.2);
-}
-
-.profile.untappd .profile-link a {
-    background-color: rgb( 	255, 204, 0);
-}
-
-.profile.untappd .profile-samples {
-    min-height: 5.3em;
-}
-
-.profile.social .profile-desc {
-    background-color: rgba(66, 103, 178, 0.2);
-}
-
-.profile.social .profile-link a {
-    background-color: rgba(66, 103, 178);
 }
 
 .profile-link {

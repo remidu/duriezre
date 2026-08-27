@@ -4,8 +4,6 @@ window.addEventListener('load', function () {
     this.updateMusic();
     this.updateShows();
     this.updateGames();
-    this.updateComics();
-    this.updateBeers();
 });
 
 function updateMusic() {
@@ -21,35 +19,6 @@ function updateMusic() {
     .catch(error => {
         console.error("Erreur : " + error);
         element.textContent = ' de la musique';
-    });
-}
-
-function updateBeers() {
-    fetch('/api/untappd')
-    .then(response => response.json()
-    .then(json => {
-        let element = document.getElementById('beers')
-        let names = json.map(beer => beer.name);
-        element.textContent = ' : '.concat([...new Set(names)].join(', '));
-        json.forEach(beer =>
-            this.addImgToProfile('untappd', beer.image, beer.name, beer.url));
-    }))
-    .catch(error => console.error("Erreur : " + error));
-}
-
-function updateComics() {
-    let element = document.getElementById('comics');
-    fetch('/api/comicgeeks')
-    .then(response => response.json()
-    .then(json => {
-        let names = json.map(book => book.name.replace(/ #([0-9])+/, ''));
-        element.textContent = ' '.concat([...new Set(names)].join(', '));
-        json.forEach(book =>
-            this.addImgToProfile('comicgeeks', book.image, book.name, book.url));
-    }))
-    .catch(error => {
-        console.error("Erreur : " + error);
-        element.textContent = ' des comics';
     });
 }
 

@@ -39,21 +39,6 @@ def betaseries():
             'url': 'https://www.betaseries.com/serie/' + y['slug']}, shows_payload['shows'], details_payload['shows'])
     return jsonify(list(shows))
 
-@app.route('/api/comicgeeks')
-def comicgeeks():
-    url = 'https://leagueofcomicgeeks.com/comic/get_comics?user_id=43509' \
-        + '&list=1&date_type=recent&order=pulls'
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0'}
-    json = requests.get(url, headers=headers).json()
-    html = json['list']
-    soup = BeautifulSoup(html, features="html.parser")
-    li_tags = soup.find_all('li')
-    comics = list(map(lambda li:
-        {'image': li.img['data-src'].replace('medium', 'large'),
-            'url': 'https://leagueofcomicgeeks.com' + li.a['href'],
-            'name': li.find('div', {'class': 'title'}).text.replace('\n', '')}, li_tags))
-    return jsonify(comics[:3])
-
 @app.route('/api/gamekult')
 def gamekult():
     url = "https://www.gamekult.com/membre/1241161/collection/rechercher.html?&page=1"
@@ -65,17 +50,6 @@ def gamekult():
             'url' : 'https://www.gamekult.com' + figure.a['href'],
             'name': figure.next_sibling.next_sibling.h3.a.text}, figure_tags))
     return jsonify(games[:3])
-
-@app.route('/api/untappd')
-def untappd():
-    url = "https://untappd.com/user/remidu/beers?sort=date"
-    html = requests.get(url, headers = {'User-Agent': 'Mozilla/5.0'}).text
-    soup = BeautifulSoup(html, features="html.parser")
-    beer_items = soup.find_all('div', {'class': 'beer-item'})
-    beers = list(map(lambda item:
-        {'image': item.a.img['src'], 'url': 'https://untappd.com' + item.a['href'],
-            'name': item.a.img['alt'].replace(' label', '')}, beer_items))
-    return jsonify(beers[:3])
 
 if __name__=='__main__':
     app.run(debug=True)
