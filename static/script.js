@@ -12,7 +12,7 @@ function updateMusic() {
     .then(response => response.json()
     .then(json => {
         let names = json.map(album => album.artist.name);
-        element.textContent = ' '.concat([...new Set(names)].join(', '));
+        element.textContent = [...new Set(names)].join(', ');
         json.forEach(album =>
             this.addImgToProfile('lastfm', album.image, album.artist.name + " – " + album.name, album.url));
     }))
@@ -27,13 +27,13 @@ function updateGames() {
     fetch('/api/gamekult')
     .then(response => response.json()
     .then(json => {
-        element.textContent = ' à '.concat(json.map(game => game.name).join(', '));
+        element.textContent = json.map(game => game.name).join(', ');
         json.forEach(game =>
             this.addImgToProfile('gamekult', game.image, game.name, game.url));
     }))
     .catch(error => {
         console.error("Erreur : " + error);
-        element.textContent = ' aux jeux vidéo';
+        element.textContent = 'des jeux vidéo';
     });
 }
 
@@ -42,7 +42,7 @@ function updateShows() {
     fetch('/api/betaseries')
     .then(response => response.json()
     .then(json => {
-        element.textContent = ' '.concat(json.map(show => show.name.replace(/ \(([0-9])+\)/, '')).join(', '));
+        element.textContent = json.map(show => show.name.replace(/ \(([0-9])+\)/, '')).join(', ');
         json.forEach(show =>
             this.addImgToProfile('betaseries', show.image, show.name, show.url));
     }))

@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html {
     font-size: calc(1em + 1vw);
 }
@@ -9,124 +15,273 @@ html {
 }
 
 body {
-    background-color: mintcream;
-    font-family: "helvetica", sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f4c75 100%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
     margin: 0;
+    min-height: 100vh;
+    padding: 3rem 1rem;
+    color: #1e293b;
 }
 
+/* Header */
 header {
     text-align: center;
+    margin-bottom: 4rem;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
 }
 
 header h1 .machine {
-    font-family: monospace;
+    font-family: "SF Mono", Monaco, "Cascadia Code", Inconsolata, monospace;
+    font-weight: 600;
+    letter-spacing: 0.05em;
 }
 
 header h1 .human {
     font-family: cursive;
+    font-weight: 400;
 }
 
-header p span {
-	margin: 0 1em 0 1em;
-	white-space: nowrap;
+header .header-info {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+header .info-badge {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    color: #cbd5e1;
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+header .badge-emoji {
+    margin-right: 0.6rem;
+}
+
+header .info-badge:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #f1f5f9;
+}
+
+@media screen and (max-width: 600px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+}
+
+/* Main Content */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
 }
 
 .profile {
-    margin: 2em 1em 2em 1em;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile:hover {
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.2);
 }
 
 .profile-display {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2.5rem;
 }
 
 .profile-desc {
     display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
     flex-grow: 1;
-    padding: 0 1em 0 1em;
     text-align: left;
 }
 
 .profile-desc p {
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1e293b;
+    letter-spacing: -0.01em;
 }
 
+.profile-desc p span {
+    font-weight: 700;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.profile-samples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 0;
+}
+
+.profile-samples a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.profile-samples a:hover img {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.profile-samples img {
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments for profile-display */
 @media screen and (max-width: 800px), screen and (max-device-width: 400px) {
-    .profile-desc {
-        flex-wrap: wrap;
+    .profile-display {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem;
     }
-    .profile-desc p {
-        width: 100%;
+
+    .profile-samples {
+        justify-content: center;
+    }
+
+    .profile-samples img {
+        width: 5rem;
+        height: 5rem;
     }
 }
 
 @media screen and (min-width: 800px) and (min-device-width: 400px) {
     .profile-desc p {
-        width: 45%;
+        width: auto;
     }
+
     .profile-samples {
-        margin-top: 1em;
+        margin-top: 1rem;
+        justify-content: center;
+        gap: 2.5rem;
     }
 }
 
-.profile-samples {
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-evenly;
-    margin-bottom: 1em;
-}
-
-.profile-samples img {
-    width: 5em;
-}
-
-.profile.betaseries .profile-desc {
-    background-color: rgba(59, 141, 208, 0.2);
-}
-
-.profile.betaseries .profile-link a {
-    background-color: rgba(59, 141, 208);
-}
-
-.profile.betaseries .profile-samples {
-    min-height: 7.5em;
-}
-
-.profile.lastfm .profile-desc {
-    background-color: rgba(213, 16, 7, 0.2);
-}
-
-.profile.lastfm .profile-link a {
-    background-color: rgb(213, 16, 7);
-}
-
-.profile.lastfm .profile-samples {
-    min-height: 5.3em;
-}
-
-.profile.gamekult .profile-desc {
-    background-color: rgba(245, 166, 35, 0.2);
-}
-
-.profile.gamekult .profile-link a {
-    background-color: rgb(245, 166, 35);
-}
-
-.profile.gamekult .profile-samples {
-    min-height: 5.3em;
-}
-
+/* Profile Link Section */
 .profile-link {
-    text-align: right;
+    padding: 0 2.5rem 2.5rem 2.5rem;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .profile-link a {
-    border-color: gray;
-    border-style: solid;
-    border-width: thin;
-    color: rgba(255, 255, 255, 0.95);
-    padding: 0.3em;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    color: white;
     text-decoration: none;
-    text-shadow: 1px 1px 4px black;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+}
+
+.profile-link a span {
+    display: block;
+}
+
+.profile-link a:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Profile Colors with gradients */
+.profile.lastfm .profile-link a {
+    background: linear-gradient(135deg, #d50007 0%, #ff4444 100%);
+}
+
+.profile.lastfm .profile-link a:hover {
+    background: linear-gradient(135deg, #b80006 0%, #ff6666 100%);
+}
+
+.profile.betaseries .profile-link a {
+    background: linear-gradient(135deg, #3b8dd0 0%, #5ba3e0 100%);
+}
+
+.profile.betaseries .profile-link a:hover {
+    background: linear-gradient(135deg, #2d6fa8 0%, #4a8fd0 100%);
+}
+
+.profile.gamekult .profile-link a {
+    background: linear-gradient(135deg, #f5a623 0%, #ffc857 100%);
+    color: #1e293b;
+}
+
+.profile.gamekult .profile-link a:hover {
+    background: linear-gradient(135deg, #d4851b 0%, #ffb500 100%);
+}
+
+/* Mobile optimizations */
+@media screen and (max-width: 600px) {
+    body {
+        padding: 1.5rem 1rem;
+    }
+
+    main {
+        gap: 1.5rem;
+    }
+
+    .profile-display {
+        padding: 1.5rem;
+    }
+
+    .profile-link {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+    }
+
+    .profile-link a {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
 }
